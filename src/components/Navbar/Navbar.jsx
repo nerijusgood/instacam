@@ -20,9 +20,7 @@ export default class Navbar extends Component {
               <span class='u-visuallyHidden'>Menu</span>
             </label>
             <ul class='Navbar-list'>
-              <li class='Navbar-item'><Link href='/'>Front</Link></li>
-              <li class='Navbar-item'><Link href='/work'>Work</Link></li>
-              <li class='Navbar-item'><Link href='/hire'>Hire</Link></li>
+              <li class='Navbar-item'><Link href='/'>Home</Link></li>
             </ul>
           </nav>
       </div>

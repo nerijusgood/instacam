@@ -11,7 +11,7 @@ export default class Button extends Component {
     { stars }
   ){
     const el = url ?
-      <a href={url} class='Button' {...props}>
+      <a href={url} class='Button' onClick={onClick} {...props}>
         {children}
       </a> :
       <button class='Button' onClick={onClick} {...props}>
