@@ -12,12 +12,17 @@ export default class Home extends Component {
     const ctx = canvas.getContext('2d')
     const reader = new FileReader()
 
+    const maxWidth = 320
+
     reader.onload = function(event){
       const img = new Image()
       img.onload = function(){
-        canvas.width = img.width
-        canvas.height = img.height
-        ctx.drawImage(img,0,0)
+        console.log(img.width, img.height)
+        console.log(maxWidth, maxWidth * img.height / img.width)
+
+        canvas.width = maxWidth
+        canvas.height = maxWidth * img.height / img.width
+        ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, maxWidth, canvas.height)
       }
       img.src = event.target.result
     }
@@ -30,7 +35,7 @@ export default class Home extends Component {
     const dt = canvas.toDataURL('image/png')
 
     this.setState({
-      url: dt.replace(/^data:image\/[^;]/, 'data:application/octet-stream')
+      url: dt.replace(/^data:image\/[^]/, 'data:application/octet-stream')
     })
 
 
@@ -44,6 +49,7 @@ export default class Home extends Component {
     { url }
   ) {
 
+    const name = `pic-${Math.floor((Math.random() * 100) + 1)}.png`
     return (
       <Main>
           <input onChange={this.handleImage} type="file" capture="camera" accept="image/*" name="cameraInput" />
@@ -52,7 +58,7 @@ export default class Home extends Component {
             <canvas id="imageCanvas"></canvas>
           </div>
 
-          <Button url={url} onClick={this.handleDownload}>Download</Button>
+          <Button url={url} download={name} onClick={this.handleDownload}>Download</Button>
       </Main>
     )
   }
