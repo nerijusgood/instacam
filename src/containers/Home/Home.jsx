@@ -1,5 +1,4 @@
 import { h, Component } from 'preact'
-import { download } from 'downloadjs'
 import { Main, Navbar, Container, Section, Copy, Button, Card } from 'components'
 
 export default class Home extends Component {
@@ -36,7 +35,7 @@ export default class Home extends Component {
 
 
     console.log(this.state.url)
-    e.preventDefault()
+    // e.preventDefault()
     // console.log(this.href)
   }
 
